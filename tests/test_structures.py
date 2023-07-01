@@ -1,6 +1,12 @@
 import pytest
 import os
-from pymilka.structures import ProjectFile
+from pymilka.structures import ProjectFile, Directory
+
+
+def test_directory_init(tmp_path):
+    src_dir = Directory("src", tmp_path)
+    package_dir = src_dir.create_sub_dir("python_package")
+    assert os.path.exists(package_dir.directory_path)
 
 
 @pytest.mark.parametrize("file_name", ["setup.cfg", "pyproject.toml", ".gitignore"])
