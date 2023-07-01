@@ -8,7 +8,6 @@ class Directory:
     def __init__(self, directory_name: str, path: Union[str, Path] = ""):
         self.directory_name = directory_name
         self.directory_path = os.path.join(path, self.directory_name)
-        a = self.directory_path
         os.mkdir(self.directory_path)
         logger.debug(f"Successfully created directory {self.directory_name}.")
 
