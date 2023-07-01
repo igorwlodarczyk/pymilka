@@ -1,6 +1,6 @@
 import pytest
 import os
-from pymilka.structures import ProjectFile, Directory
+from pymilka.structures import ProjectFile, Directory, PythonFile
 
 
 def test_directory_init(tmp_path):
@@ -20,3 +20,13 @@ def test_project_file_init(tmp_path, file_name, directory, directories):
         project_file = ProjectFile(file_name=file_name, directory=tmp_path)
     assert os.path.exists(expected_file_path)
     assert project_file.file_path == str(expected_file_path)
+
+
+def test_structures_workflow(tmp_path):
+    project_dir = Directory("project_dir", tmp_path)
+    src_dir = Directory("src", str(project_dir))
+    package_dir = Directory("package", str(src_dir))
+    file = ProjectFile("setup.cfg", project_dir)
+    python_file = PythonFile("constants", package_dir)
+    assert os.path.exists(file.file_path)
+    assert os.path.exists(python_file.file_path)

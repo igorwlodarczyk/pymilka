@@ -14,6 +14,9 @@ class Directory:
     def create_sub_dir(self, sub_directory_name: str):
         return Directory(sub_directory_name, self.directory_path)
 
+    def __str__(self) -> str:
+        return str(self.directory_path)
+
 
 class ProjectFile:
     def __init__(self, file_name: str, directory: Union[Path, str, Directory] = ""):
@@ -26,3 +29,9 @@ class ProjectFile:
     def __create_file(self):
         with open(self.file_path, "w"):
             logger.debug(f"Successfully created {self.file_name}.")
+
+
+class PythonFile(ProjectFile):
+    def __init__(self, file_name: str, directory: Union[Path, str, Directory] = ""):
+        file_name = f"{file_name}.py"
+        super().__init__(file_name, directory)
