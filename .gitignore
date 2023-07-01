@@ -1,0 +1,21 @@
+# Python Virtual Environment
+venv/
+# Visual Studio Code
+/.vscode/
+# Generated distribution metadata
+*.egg-info
+# Build artifacts
+build/
+# PyCharm IDE
+.idea/
+# pytest cache directory
+.pytest_cache
+# Distribution packages
+dist/
+# Python bytecode cache
+__pycache__/
+# Log files
+*.log
+# Database files (specific to your project)
+*.db
+
