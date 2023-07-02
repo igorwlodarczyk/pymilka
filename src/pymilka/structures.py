@@ -35,3 +35,9 @@ class PythonFile(ProjectFile):
     def __init__(self, file_name: str, directory: Union[Path, str, Directory] = ""):
         file_name = f"{file_name}.py"
         super().__init__(file_name, directory)
+
+
+class PythonPackage(Directory):
+    def __init__(self, directory_name: str, path: Union[str, Path] = ""):
+        super().__init__(directory_name, path)
+        self.init_py = PythonFile("__init__", self.directory_path)
